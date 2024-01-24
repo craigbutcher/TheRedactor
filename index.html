@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        font-family: Arial;
+    }
+
+    #wrapper {
+        border: 1px solid purple;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    button {
+        background-color: white;
+        border: 1px solid black;
+        font-size: 1rem;
+        padding: 1rem;
+    }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+
+        <button type="button" id="redact">Redact!</button>
+
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam recusandae tempora culpa dolorum temporibus. Animi eos perferendis reiciendis culpa eligendi debitis explicabo doloremque voluptate? Maxime eligendi consequatur ex vel quaerat!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis impedit minima dolor incidunt pariatur quas nobis voluptates temporibus, vel perspiciatis quisquam illum quo quam accusantium odit. Culpa eius obcaecati maxime.</p>
+
+    </div>
+
+
+<script>
+    function redactRandomWords() {
+        const elementsToRedact = document.querySelectorAll('#wrapper h1, #wrapper h2, #wrapper h3, #wrapper h4, #wrapper h5, #wrapper h6, #wrapper p,#wrapper ul, #wrapper li, #wrapper ol');
+
+        elementsToRedact.forEach((el) => {
+            const words = el.textContent.split(' ');
+
+            const redactedWords = words.map((word) => {
+                if (word.length <= 6) {
+                    return word;
+                }
+
+                const shouldRedact = Math.random() < 0.5;
+                return shouldRedact ? '<span style="color: black; background-color: black;">' + '█'.repeat(word.length) + '</span>' : word;
+            });
+
+            el.innerHTML = redactedWords.join(' ');
+        });
+    };
+
+    document.querySelector('#redact').addEventListener('click', redactRandomWords);
+</script>
+</body>
+</html>
