@@ -3,24 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Redactor</title>
     <style>
+
+        /* Box sizing rules */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* Prevent font size inflation */
+        html {
+            -moz-text-size-adjust: none;
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+
+        /* Remove default margin in favour of better control in authored CSS */
+        body, h1, h2, h3, h4, p,
+        figure, blockquote, dl, dd {
+            margin-block-end: 0;
+        }
+
+        /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+        ul[role='list'],
+        ol[role='list'] {
+            list-style: none;
+        }
+
+        /* Set core body defaults */
         body {
-        font-family: Arial;
-    }
+            min-height: 100vh;
+            line-height: 1.5;
+        }
 
-    #wrapper {
-        border: 1px solid purple;
-        padding: 1rem;
-        margin-bottom: 1rem;
-    }
+        /* Set shorter line heights on headings and interactive elements */
+        h1, h2, h3, h4,
+        button, input, label {
+            line-height: 1.1;
+        }
 
-    button {
-        background-color: white;
-        border: 1px solid black;
-        font-size: 1rem;
-        padding: 1rem;
-    }
+        /* Balance text wrapping on headings */
+        h1, h2,
+        h3, h4 {
+            text-wrap: balance;
+        }
+
+        /* A elements that don't have a class get default styles */
+        a:not([class]) {
+            text-decoration-skip-ink: auto;
+            color: currentColor;
+        }
+
+        /* Make images easier to work with */
+        img,
+        picture {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Inherit fonts for inputs and buttons */
+        input, button,
+        textarea, select {
+            font: inherit;
+        }
+
+        /* Make sure textareas without a rows attribute are not tiny */
+        textarea:not([rows]) {
+            min-height: 10em;
+        }
+
+        /* Anything that has been anchored to should have extra scroll margin */
+        :target {
+            scroll-margin-block: 5ex;
+        }
+
+        body {
+            font-family: Arial;
+        }
+
+        #wrapper {
+            border: 1px solid purple;
+            padding: 1rem;
+            margin: 0 auto;
+            max-width: 60rem;
+        }
+
+        button {
+            background-color: white;
+            border: 1px solid black;
+            font-size: 1rem;
+            padding: 1rem;
+        }
+
+        button:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -38,12 +119,7 @@
         <p>Further advice – that should surely be unnecessary for even the most casual of tea aficionados – is that both teabags and loose leaves should be used only once.</p>
         <p>“The research shows that the size of the bag really matters, not the shape, but some shapes give you more space,” said Francl. “Tea leaves expand by maybe a factor of four or five and if you don’t give them enough space, there’s not enough good access from the solvent.</p>
         <p>Francl analysed research papers and ancient texts dating back more than 1,000 years to devise the best brew, documenting these experiments in her new book, Steeped: The Chemistry of Tea.</p>
-
-
-        
     </div>
-
-
 <script>
     function redactRandomWords() {
         const elementsToRedact = document.querySelectorAll('#wrapper h1, #wrapper h2, #wrapper h3, #wrapper h4, #wrapper h5, #wrapper h6, #wrapper p,#wrapper ul, #wrapper li, #wrapper ol');
